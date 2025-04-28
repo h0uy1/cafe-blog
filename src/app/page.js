@@ -1,6 +1,49 @@
-import Image from 'next/image'
+"use client"
 
+import Image from 'next/image'
+import { useState } from 'react';
+import Swal from 'sweetalert2'
 export default function Home() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [errors, setErrors] = useState({});
+
+  const validateEmail = (email) => {
+    // Regular expression for email validation
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailPattern.test(email);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const validationErrors = {};
+
+    // Validate Name
+    if (!name) validationErrors.name = 'Name is required';
+    
+    // Validate Email
+    if (!email) {
+      validationErrors.email = 'Email is required';
+    } else if (!validateEmail(email)) {
+      validationErrors.email = 'Email address is invalid';
+    }
+
+    // Validate Message
+    if (!message) validationErrors.message = 'Message is required';
+
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length === 0) {
+      Swal.fire({
+        title: "Thank You",
+        text: "The Email Have Been Send",
+        icon: "success"
+      });
+    }
+  };
+
   return (
     <div >
       <section className="relative h-screen bg-cover bg-center bg-[url('/home.jpg')]">
@@ -66,12 +109,40 @@ export default function Home() {
       </section>
       <section className="bg-brown py-16 px-6">
         <h2 className="text-4xl font-semibold text-center mb-8">Get in Touch</h2>
-        <form className="max-w-2xl mx-auto space-y-6">
-          <input type="text" placeholder="Your Name" className="w-full p-4 rounded-lg text-gray-800 bg-orange-50 " required/>
-          <input type="email" placeholder="Your Email" className="w-full p-4 rounded-lg text-gray-800 bg-orange-50" required/>
-          <textarea placeholder="Your Message" className="w-full p-4 rounded-lg text-gray-800 h-32 bg-orange-50" required></textarea>
+        <form className="max-w-2xl mx-auto space-y-6" onSubmit={handleSubmit}>
+          <div>
+            <input
+              type="text"
+              placeholder="Your Name"
+              className="w-full p-4 rounded-lg text-gray-800 bg-orange-50"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+          </div>
+          <div>
+            <input
+              type="email"
+              placeholder="Your Email"
+              className="w-full p-4 rounded-lg text-gray-800 bg-orange-50"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+          </div>
+          <div>
+            <textarea
+              placeholder="Your Message"
+              className="w-full p-4 rounded-lg text-gray-800 h-32 bg-orange-50"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
+            {errors.message && <p className="text-red-500 text-sm">{errors.message}</p>}
+          </div>
           <div className="text-center">
-            <button type="submit" className="text-white font-semibold px-6 py-3 rounded-full hover:bg-cream transition bg-[#A4B465] hover:bg-[#626F47]">Send Message</button>
+            <button type="submit" className="text-white font-semibold px-6 py-3 rounded-full hover:bg-cream transition bg-[#A4B465] hover:bg-[#626F47]">
+              Send Message
+            </button>
           </div>
         </form>
       </section>
