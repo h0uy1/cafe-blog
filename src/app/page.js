@@ -64,31 +64,31 @@ export default function Home() {
         </div>
       </section>
       <section id="menu" className="bg-orange-100 py-16 px-6">
-        <h2 className="text-4xl font-semibold text-center mb-8">Our Menu</h2>
+        <h2 className="text-4xl font-semibold text-center mb-8 text-black">Our Menu</h2>
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <div>
-            <h3 className="text-2xl font-bold mb-2">Latte</h3>
-            <p>$4.50 - Smooth espresso with steamed milk</p>
+            <h3 className="text-2xl font-bold mb-2 text-black">Latte</h3>
+            <p className='text-black'>$4.50 - Smooth espresso with steamed milk</p>
           </div>
           <div>
-            <h3 className="text-2xl font-bold mb-2">Cappuccino</h3>
-            <p>$4.00 - Rich espresso topped with foamed milk</p>
+            <h3 className="text-2xl font-bold mb-2 text-black">Cappuccino</h3>
+            <p className='text-black'>$4.00 - Rich espresso topped with foamed milk</p>
           </div>
           <div>
-            <h3 className="text-2xl font-bold mb-2">Mocha</h3>
-            <p>$5.00 - Espresso mixed with chocolate and milk</p>
+            <h3 className="text-2xl font-bold mb-2 text-black">Mocha</h3>
+            <p className='text-black'>$5.00 - Espresso mixed with chocolate and milk</p>
           </div>
           <div>
-            <h3 className="text-2xl font-bold mb-2">Blueberry Muffin</h3>
-            <p>$3.00 - Baked fresh daily with real blueberries</p>
+            <h3 className="text-2xl font-bold mb-2 text-black">Blueberry Muffin</h3>
+            <p className='text-black'>$3.00 - Baked fresh daily with real blueberries</p>
           </div>
           <div>
-            <h3 className="text-2xl font-bold mb-2">Avocado Toast</h3>
-            <p>$5.50 - Toasted bread topped with fresh avocado</p>
+            <h3 className="text-2xl font-bold mb-2 text-black">Avocado Toast</h3>
+            <p className='text-black'>$5.50 - Toasted bread topped with fresh avocado</p>
           </div>
           <div>
-            <h3 className="text-2xl font-bold mb-2">Herbal Tea</h3>
-            <p>$3.50 - Relaxing blends of natural herbs</p>
+            <h3 className="text-2xl font-bold mb-2 text-black">Herbal Tea</h3>
+            <p className='text-black'>$3.50 - Relaxing blends of natural herbs</p>
           </div>
         </div>
       </section>
